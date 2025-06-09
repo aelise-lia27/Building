@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Building</title>
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #1E3A8A;
+            --light-color: #F8F9FA;
+            --dark-color: #1E1E1E;
+            --white: #FFFFFF;
+            --gold: #FFD700;
+            --transition: all 0.3s ease;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #4BB543;
+            color: white;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        select#type-projet {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+        }
+    </style>
+</head>
+<body>
+   <header class="entete">
+    <div class="logo">
+        <img src="../img2/Logo_building_orage_sans_avc_fond.png" alt="Logo BUILDING">
+    </div>
+    
+    <!-- Menu mobile (hamburger) -->
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav class="navigation" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="about.html">A propos</a></li>
+            <li class="has-menu1">
+                <a href="service.html">Services</a>
+                <nav class="sousMenu1">
+                    <ul>
+                        <li class="has-menu2">
+                            <a href="#">Maison à vendre</a>
+                            <nav class="sousMenu2">
+                                <ul>
+                                    <li><a href="service1.html">Maisons luxueuses</a></li>
+                                    <li><a href="service2.html">Maisons moins cher</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="instrument.html">Les instruments</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li><a href="publcation.html">Publication</a></li>
+            <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-content">
+                <h1>Contactez notre équipe</h1>
+                <p>Un projet en tête ? Notre équipe est à votre écoute pour le concrétiser</p>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2><i class="fas fa-building"></i> Building Company</h2>
+                    <p>Nous sommes disponibles pour répondre à toutes vos questions et vous accompagner dans vos projets de construction.</p>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>123 Avenue de la Construction<br>Lomé, Togo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+228 90 00 00 00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@building.tg</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i> Merci pour votre message ! Nous vous contacterons rapidement.
+                    </div>
+                    
+                    <h2><i class="fas fa-paper-plane"></i> Envoyez-nous un message</h2>
+                    <form method="post" action="../index.php" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="nom" placeholder="Votre nom" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="tel" name="tel" placeholder="Votre téléphone" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Votre email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select name="type-projet" id="type-projet" required>
+                                <option value="">Type de projet</option>
+                                <optgroup label="Construction neuve">
+                                    <option value="maison-individuelle">Maison individuelle</option>
+                                    <option value="immeuble-residentiel">Immeuble résidentiel</option>
+                                    <option value="batiment-commercial">Bâtiment commercial</option>
+                                    <option value="lotissement">Lotissement</option>
+                                </optgroup>
+                                <optgroup label="Rénovation">
+                                    <option value="renovation-complete">Rénovation complète</option>
+                                    <option value="extension">Extension de bâtiment</option>
+                                    <option value="reamenagement">Réaménagement intérieur</option>
+                                    <option value="isolation">Isolation thermique</option>
+                                </optgroup>
+                                <optgroup label="Travaux spécifiques">
+                                    <option value="terrassement">Terrassement</option>
+                                    <option value="charpente-couverture">Charpente/Couverture</option>
+                                    <option value="plomberie">Plomberie/Sanitaire</option>
+                                    <option value="electricite">Électricité</option>
+                                </optgroup>
+                                <optgroup label="Autres services">
+                                    <option value="devis">Demande de devis</option>
+                                    <option value="conseil">Conseil en construction</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea name="description" placeholder="Décrivez votre projet en détail..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Map Section -->
+        <section class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d1.2318185153657334!3d6.201662645483475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1023e3e3e3e3e3e3%3A0x3e3e3e3e3e3e3e3e!2sLom%C3%A9%2C%20Togo!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+            </iframe>
+        </section>
+    </main>
+
+    <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>BUILDING</h2>
+                    <p>Construire avec confiance.</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="links-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="#">Nos services</a></li>
+                            <li><a href="#">Réalisations</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Ressources</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Guides</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Compagny</h3>
+                        <ul>
+                            <li><a href="#">À propos</a></li>
+                            <li><a href="#">Équipe</a></li>
+                            <li><a href="#">Carrières</a></li>
+                            <li><a href="#">Partenaires</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Légal</h3>
+                        <ul>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">Confidentialité</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">CGU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <p>📍 Lomé, Togo</p>
+                            <p>📞 +228 90 00 00 00</p>
+                            <p>✉️ contact@building.tg</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-social">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 BUILDING. Tous droits réservés.</p>
+            </div>
+        </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulation d'envoi réussi pour la démo
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Faire défiler jusqu'au message de succès
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Réinitialiser le formulaire après 3 secondes
+            setTimeout(() => {
+                this.reset();
+            }, 3000);
+            
+            // Dans une implémentation réelle, vous enverriez les données au serveur ici
+            // et afficheriez le message de succès seulement après une réponse positive
+        });
+    </script>
+    <script src="../js/header.js"></script>
+</body>
+</html>
