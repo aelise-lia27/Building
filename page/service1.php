@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maisons Luxueuses - Building</title>
     <link rel="stylesheet" href="../css/souServce.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
     <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -25,44 +23,8 @@
 
 <body>
   
-    <header class="entete">
-    <div class="logo">
-        <img src="../img2/Logo_building_orage_sans_avc_fond.png" alt="Logo BUILDING">
-    </div>
-    
-    <!-- Menu mobile (hamburger) -->
-    <div class="menu-toggle" id="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    
-    <nav class="navigation" id="main-nav">
-        <ul>
-            <li><a href="../index.html">Accueil</a></li>
-            <li><a href="about.html">A propos</a></li>
-            <li class="has-menu1">
-                <a href="service.html">Services</a>
-                <nav class="sousMenu1">
-                    <ul>
-                        <li class="has-menu2">
-                            <a href="#">Maison à vendre</a>
-                            <nav class="sousMenu2">
-                                <ul>
-                                    <li><a class="active" href="service1.html">Maisons luxueuses</a></li>
-                                    <li><a href="service2.html">Maisons moins cher</a></li>
-                                </ul>
-                            </nav>
-                        </li>
-                        <li><a href="instrument.html">Les instruments</a></li>
-                    </ul>
-                </nav>
-            </li>
-            <li><a href="publcation.html">Publication</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <?php  require_once(__DIR__.'/header.php'); ?>
+
     <!-- Intro Section -->
     <section class="luxury-intro">
         <div class="container">
@@ -282,79 +244,8 @@
         </div>
     </section>
 </body>
-<footer class="footer">
-            <div class="footer-container">
-                <div class="footer-logo">
-                    <h2>BUILDING</h2>
-                    <p>Construire avec confiance.</p>
-                </div>
+   <?php  require_once(__DIR__.'/footer.php'); ?>
 
-                <div class="footer-links">
-                    <div class="links-column">
-                        <h3>Product</h3>
-                        <ul>
-                            <li><a href="#">Accueil</a></li>
-                            <li><a href="#">Nos services</a></li>
-                            <li><a href="#">Réalisations</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="links-column">
-                        <h3>Ressources</h3>
-                        <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Guides</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Support</a></li>
-                        </ul>
-                    </div>
-                    <div class="links-column">
-                        <h3>Compagny</h3>
-                        <ul>
-                            <li><a href="#">À propos</a></li>
-                            <li><a href="#">Équipe</a></li>
-                            <li><a href="#">Carrières</a></li>
-                            <li><a href="#">Partenaires</a></li>
-                        </ul>
-                    </div>
-                    <div class="links-column">
-                        <h3>Légal</h3>
-                        <ul>
-                            <li><a href="#">Mentions légales</a></li>
-                            <li><a href="#">Confidentialité</a></li>
-                            <li><a href="#">Cookies</a></li>
-                            <li><a href="#">CGU</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="footer-right">
-                    <div class="footer-contact">
-                        <h3>Contact</h3>
-                        <div class="contact-info">
-                            <p>📍 Lomé, Togo</p>
-                            <p>📞 +228 90 00 00 00</p>
-                            <p>✉️ contact@building.tg</p>
-                        </div>
-                    </div>
-
-                    <div class="footer-social">
-                    <h3>Suivez-nous</h3>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>© 2025 BUILDING. Tous droits réservés.</p>
-            </div>
-        </footer>
         <script src="../js/header.js"></script>
 </body>
 </html>

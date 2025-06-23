@@ -1,4 +1,19 @@
 /* Header Styles */
+:root {
+    --primary-color: #FF8C00;
+    --secondary-color: #1E3A8A;
+    --light-color: #F8F9FA;
+    --dark-color: #1E1E1E;
+    --white: #FFFFFF;
+    --gold: #FFD700;
+    --transition: all 0.3s ease;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 header {
     padding: 15px 5%;
     background-color: rgb(1, 7, 22);
@@ -10,6 +25,7 @@ header {
     top: 0;
     z-index: 99999;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    
 }
 
 .logo img {
@@ -24,7 +40,7 @@ header {
     transform: scale(1.05);
 }
 
-.navigation > ul {
+.navigation>ul {
     display: flex;
     margin: 0;
     padding: 0;
@@ -55,11 +71,13 @@ header {
 }
 
 /* Sous-menus */
-.has-menu1, .has-menu2 {
+.has-menu1,
+.has-menu2 {
     position: relative;
 }
 
-.sousMenu1, .sousMenu2 {
+.sousMenu1,
+.sousMenu2 {
     position: absolute;
     background-color: rgb(1, 7, 22);
     border: 1px solid orange;
@@ -118,12 +136,14 @@ header {
     height: 100%;
 }
 
-.sousMenu1 li, .sousMenu2 li {
+.sousMenu1 li,
+.sousMenu2 li {
     margin: 0;
     padding: 0;
 }
 
-.sousMenu1 a, .sousMenu2 a {
+.sousMenu1 a,
+.sousMenu2 a {
     padding: 8px 20px;
     margin: 0;
     color: #c1c1c1;
@@ -132,7 +152,8 @@ header {
     transition: all 0.3s ease;
 }
 
-.sousMenu1 a:hover, .sousMenu2 a:hover {
+.sousMenu1 a:hover,
+.sousMenu2 a:hover {
     background-color: orange;
     color: rgb(1, 7, 22);
     border-radius: 0;
@@ -176,52 +197,163 @@ header {
     transform: translateY(-5px) rotate(-45deg);
 }
 
+/* Authentif */
+/* Style spécifique pour le menu d'authentification */
+.auth-menu {
+    position: relative;
+    margin-left: auto;
+    /* Pour aligner à droite */
+}
+
+.auth-menu>a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.auth-menu>a:hover {
+    background-color: #e67e00;
+    transform: translateY(-2px);
+}
+
+.auth-submenu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 220px;
+    background: rgb(1, 7, 22);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.auth-submenu ul li a {
+    color: var(--white-color);
+}
+
+.auth-menu:hover .auth-submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.auth-submenu ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.auth-submenu li {
+    padding: 0;
+}
+
+.auth-submenu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    /* color: var(--light-color); */
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 0.5px solid #e67f0047;
+}
+
+.auth-submenu a:hover {
+    background-color: var(--light-color);
+    color: var(--primary-color);
+}
+
+.auth-submenu a i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Style pour mobile */
+@media (max-width: 800px) {
+    .auth-menu {
+        margin-left: 0;
+        order: -1;
+        /* Pour placer en haut sur mobile */
+    }
+
+    .auth-submenu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        display: none;
+    }
+
+    .auth-menu:hover .auth-submenu,
+    .auth-menu.active .auth-submenu {
+        display: block;
+    }
+
+    .auth-menu>a {
+        border-radius: 0;
+        justify-content: center;
+    }
+}
+
 /* Responsive styles */
 @media (max-width: 992px) {
-    .navigation > ul {
+    .navigation>ul {
         margin-left: 0;
     }
-    
+
     .navigation ul li {
         margin: 0 5px;
     }
-    
+
     .navigation ul li a {
         padding: 8px 10px;
         font-size: 14px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     header {
         padding: 10px 5%;
     }
-    
+
     .logo img {
         width: 100px;
         height: 60px;
     }
-    
+
     /* .menu-toggle {
         display: flex !important; 
         position: relative;
         right: 0;
     } */
-     .menu-toggle {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 100001;
-  height: 40px;
-  width: 40px;
-  background-color: rgba(0, 0, 0, 0.2); /* Pour voir la boîte */
-}
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 100001;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(0, 0, 0, 0.2);
+        /* Pour voir la boîte */
+    }
 
-    
+
     .navigation {
         position: fixed;
         top: 0;
@@ -236,27 +368,28 @@ header {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
         z-index: 99998;
     }
-    
+
     .navigation.active {
         right: 0;
     }
-    
-    .navigation > ul {
+
+    .navigation>ul {
         flex-direction: column;
     }
-    
+
     .navigation ul li {
         margin: 10px 0;
         width: 100%;
     }
-    
+
     .navigation ul li a {
         padding: 12px 15px;
         font-size: 16px;
         border-radius: 4px;
     }
-    
-    .sousMenu1, .sousMenu2 {
+
+    .sousMenu1,
+    .sousMenu2 {
         position: static;
         display: none;
         width: 100%;
@@ -268,8 +401,8 @@ header {
         transform: none;
     }
 
-    .has-menu1.active > .sousMenu1,
-    .has-menu2.active > .sousMenu2 {
+    .has-menu1.active>.sousMenu1,
+    .has-menu2.active>.sousMenu2 {
         display: block;
     }
 
@@ -284,12 +417,12 @@ header {
     header {
         padding: 8px 3%;
     }
-    
+
     .logo img {
         width: 80px;
         height: 50px;
     }
-    
+
     .navigation {
         width: 100%;
         max-width: none;
@@ -301,6 +434,7 @@ header {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
