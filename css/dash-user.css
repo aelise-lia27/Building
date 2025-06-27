@@ -1,0 +1,477 @@
+:root {
+    --primary-color: #FF8C00;
+    --secondary-color: #1E3A8A;
+    --light-color: #F8F9FA;
+    --dark-color: #1E1E1E;
+    --gray-color: #6C757D;
+    --white: #FFFFFF;
+    --black: #000000;
+    --transition: all 0.3s ease;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --sidebar-width: 280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+}
+
+.user-dashboard-container {
+    display: flex;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+}
+
+/* User Sidebar */
+.user-sidebar {
+    width: var(--sidebar-width);
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 2rem 0;
+    position: sticky;
+    top: 80px; /* Adjust based on header height */
+    height: calc(100vh - 80px); /* Adjust based on header height */
+    overflow-y: auto;
+}
+
+.user-profile {
+    text-align: center;
+    padding: 0 1.5rem 2rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5rem;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.user-profile h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+.user-email {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+.user-nav ul {
+    list-style: none;
+    padding: 0 1rem;
+}
+
+.user-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.user-nav li a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+    color: var(--gray-color);
+}
+
+.user-nav li a:hover {
+    background: rgba(255, 140, 0, 0.1);
+    color: var(--primary-color);
+}
+
+.user-nav li a:hover i {
+    color: var(--primary-color);
+}
+
+.user-nav li.active a {
+    background: rgba(255, 140, 0, 0.1);
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.user-nav li.active a i {
+    color: var(--primary-color);
+}
+
+.sidebar-footer {
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    background: var(--light-color);
+    color: var(--dark-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}
+
+.logout-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Main Content */
+.user-main-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+.welcome-banner {
+    background: linear-gradient(135deg, var(--primary-color), #FFA500);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+.welcome-banner h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-banner p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* Quick Stats */
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    background: rgba(255, 140, 0, 0.1);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.stat-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.stat-info p {
+    color: var(--gray-color);
+    font-size: 0.9rem;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* Recent Activity */
+.recent-activity {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+.activity-list {
+    margin-bottom: 1.5rem;
+}
+
+.activity-item {
+    display: flex;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    background: rgba(30, 58, 138, 0.1);
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.activity-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-content p {
+    color: var(--gray-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.activity-date {
+    font-size: 0.8rem;
+    color: var(--gray-color);
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.view-all-link i {
+    margin-left: 5px;
+    transition: var(--transition);
+}
+
+.view-all-link:hover {
+    color: #E67E00;
+}
+
+.view-all-link:hover i {
+    transform: translateX(3px);
+}
+
+/* Current Rentals */
+.current-rentals {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+.rentals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.rental-card {
+    display: flex;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.rental-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.rental-image {
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.rental-info {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rental-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.rental-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.rental-date {
+    color: var(--gray-color);
+}
+
+.rental-price {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.rental-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.rental-status.confirmed {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success-color);
+}
+
+.rental-status.pending {
+    background: rgba(255, 193, 7, 0.1);
+    color: var(--warning-color);
+}
+
+.rental-status i {
+    margin-right: 5px;
+}
+
+.rental-details-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.rental-details-btn:hover {
+    background: #E67E00;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .user-dashboard-container {
+        flex-direction: column;
+    }
+    
+    .user-sidebar {
+        width: 100%;
+        position: static;
+        height: auto;
+        padding: 1rem;
+    }
+    
+    .user-nav ul {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+    
+    .user-nav li {
+        flex-shrink: 0;
+    }
+    
+    .user-nav li a {
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+    }
+    
+    .sidebar-footer {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .user-main-content {
+        padding: 1.5rem;
+    }
+    
+    .quick-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .rentals-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .quick-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+    }
+    
+    .activity-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .rental-card {
+        flex-direction: column;
+    }
+    
+    .rental-image {
+        width: 100%;
+        height: 150px;
+    }
+}

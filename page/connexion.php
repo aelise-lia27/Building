@@ -37,6 +37,7 @@
                             <div class="form-group">
                                 <label for="email">Adresse email</label>
                                 <input type="email" id="email" name="email"
+                                value="<?php echo isset($_COOKIE['remember_email']) ? $_COOKIE['remember_email'] : ''; ?>" 
                                     placeholder="votre@email.com">
                             </div>
 
@@ -93,29 +94,8 @@
         <?php  require_once(__DIR__.'/footer.php'); ?>
 
     </body>
-        <script>
-            const password = document.getElementById("password");
-            const message = document.getElementById("message");
-            const email = document.getElementById("email");
-        document.getElementById("login-form").addEventListener("submit", function (e) {
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  // Vérifier si les champs sont vides
-  if (!email.value.trim() || !password.value.trim()) {
-    e.preventDefault();
-    message.textContent = "Tous les champs sont obligatoires.";
-    return;
-  }
-
-  // Vérifier le format de l'email
-  if (!emailRegex.test(email.value)) {
-    e.preventDefault(); // Empêche l'envoi du formulaire
-    message.textContent = "L'adresse email est invalide.";
-    return;
-  }
-});
-    </script>
+    <script src="../js/connex.js"></script>
     <script src="../js/header.js"></script>
     <!-- <script src="../js/conex.js"></script> -->
 </html>

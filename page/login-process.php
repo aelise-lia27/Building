@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 
 // Connexion à la base
 require_once(__DIR__ .'/../config/dbconnect.php'); 
+session_start();
 
 // Vérifier données reçues
 if (!isset( $_POST['email'], $_POST['password'])) {
@@ -27,33 +28,54 @@ if (strlen($password) < 8) {
     exit;
 }
 
-// Vérifier si email existe déjà
-$stmt = $mysqlClient->prepare("SELECT id FROM users WHERE email = ?");
+// Rechercher l'utilisateur
+$stmt = $mysqlClient->prepare("SELECT id, firstname, lastname, email, password FROM users WHERE email = ?");
 $stmt->execute([$email]);
-if ($stmt->rowCount() > 0) {
-    echo json_encode(['success' => false, 'message' => "Cet email est déjà utilisé."]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    echo json_encode(['success' => false, 'message' => 'Aucun compte trouvé avec cet email.']);
     exit;
 }
 
-// Hasher le mot de passe
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+// Vérification du mot de passe (si hashé dans la base)
+if (!password_verify($password, $user['password'])) {
+    echo json_encode(['success' => false, 'message' => 'Mot de passe incorrect.']);
+    exit;
+}
 
-// Insertion
-$stmt = $mysqlClient->prepare("INSERT INTO users (firstname, lastname, email, phone, password) VALUES (?, ?, ?, ?, ?)");
-$success = $stmt->execute([$firstname, $lastname, $email, $phone, $hashedPassword]);
+// Si "se souvenir de moi" est coché, on stocke l'email dans un cookie
+/*if (isset($_POST['remember'])) {
+    setcookie('remember_email', $email, time() + (86400 * 30), "/");
+}*/
+if (!empty($_POST['remember'])) {
+    // 1. Générer un token unique
+    $token = bin2hex(random_bytes(32)); // 64 caractères
 
-if ($success) {
-    $userId = $mysqlClient->lastInsertId();
+    // 2. Hasher le token avant de l'enregistrer en base (jamais en clair !)
+    $tokenHash = password_hash($token, PASSWORD_DEFAULT);
 
-    // Démarrer la session
-    session_start();
-    $_SESSION['user_id'] = $userId;
-    $_SESSION['firstname'] = $firstname;
-    $_SESSION['lastname'] = $lastname;
-    $_SESSION['email'] = $email;
+    // 3. Expiration dans 30 jours
+    $expiration = date('Y-m-d H:i:s', time() + (86400 * 30));
 
-    echo json_encode(['success' => true]);
-} else {
-    echo json_encode(['success' => false, 'message' => "Erreur lors de l'enregistrement."]);
-}?>
+    // 4. Enregistrer dans la table remember_tokens
+    $stmt = $mysqlClient->prepare('INSERT INTO remember_tokens (user_id, token_hash, expires_at) VALUES (?, ?, ?)');
+    $stmt->execute([$user['id'], $tokenHash, $expiration]);
+
+    // 5. Envoyer le token brut dans un cookie
+    setcookie('remember_token', $token, time() + (86400 * 30), '/', '', true, true);
+    
+}
+
+
+    // Authentification réussie
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['firstname'] = $user['firstname'];
+$_SESSION['lastname'] = $user['lastname'];
+$_SESSION['email'] = $user['email'];
+
+    // Réponse succès + arrêt du script
+echo json_encode(['success' => true]);
+exit;
+
 
