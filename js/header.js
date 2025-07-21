@@ -22,15 +22,26 @@ document.addEventListener('DOMContentLoaded', function() {
         link.appendChild(submenuToggle);
 
         // Gérer le clic sur le lien parent
+<<<<<<< HEAD
         submenuToggle.addEventListener('click', function(e) {
         e.stopPropagation(); // empêche de propager jusqu’au lien
         e.preventDefault(); // n’ouvre pas de lien
         toggle.classList.toggle('active');
+=======
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                toggle.classList.toggle('active');
+            }
+>>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
         });
     });
 
     // Fermer le menu lors du clic en dehors
+<<<<<<< HEAD
     
+=======
+>>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     document.addEventListener('click', function(e) {
         if (!navigation.contains(e.target) && !menuToggle.contains(e.target)) {
             menuToggle.classList.remove('active');

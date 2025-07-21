@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Témoignages des clients - Building</title>
+    <meta name="description" content="Partagez votre expérience avec Building et lisez les avis de nos clients satisfaits">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/contact1.css">
+    <link rel="shortcut icon" href="assets/images/ChatGPT Image 10 avr. 2025, 03_55_06.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #1E3A8A;
+            --light-color: #F8F9FA;
+            --dark-color: #1E1E1E;
+            --gray-color: #6C757D;
+            --white: #FFFFFF;
+            --black: #000000;
+            --transition: all 0.3s ease;
+        }
+
+        .error-message {
+            color: #D8000C;
+            background-color: #FFD2D2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #D8000C;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .error-message i {
+            font-size: 1.2rem;
+        }
+
+        select#note {
+            padding: 15px;
+            width: 100%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 1em;
+        }
+
+        select#note option {
+            padding: 12px;
+        }
+
+        .success-message {
+            display: none;
+            color: #4F8A10;
+            background-color: #DFF2BF;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #4F8A10;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="entete">
+    <div class="logo">
+        <img src="../img2/Logo_building_orage_sans_avc_fond.png" alt="Logo BUILDING">
+    </div>
+    
+    <!-- Menu mobile (hamburger) -->
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav class="navigation" id="main-nav">
+        <ul>
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="about.html">A propos</a></li>
+            <li class="has-menu1">
+                <a href="service.html">Services</a>
+                <nav class="sousMenu1">
+                    <ul>
+                        <li class="has-menu2">
+                            <a href="#">Maison à vendre</a>
+                            <nav class="sousMenu2">
+                                <ul>
+                                    <li><a href="service1.html">Maisons luxueuses</a></li>
+                                    <li><a href="service2.html">Maisons moins cher</a></li>
+                                </ul>
+                            </nav>
+                        </li>
+                        <li><a href="instrument.html">Les instruments</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li><a class="active" href="publcation.html">Publication</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="testimonial-hero">
+            <div class="hero-content">
+                <h1>Votre Avis Compte</h1>
+                <p>Partagez votre expérience avec Building et aidez-nous à améliorer nos services</p>
+            </div>
+        </section>
+
+        <!-- Testimonial Form Section -->
+        <section class="testimonial-section">
+            <div class="testimonial-container">
+                <div class="testimonial-form">
+                    <h2><i class="fas fa-edit"></i> Publiez un avis</h2>
+                    
+                    <!-- <?php if (isset($_GET['error']) && $_GET['error'] == 'not_allowed'): ?>
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Vous devez autoriser la publication de votre avis.
+                        </div>
+                    <?php endif; ?> -->
+                    
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        Merci pour votre avis ! Il sera publié après modération.
+                    </div>
+                    
+                    <form action="submit-publication.php" method="post" class="form-avis" id="testimonialForm">
+                        <div class="form-group">
+                            <label for="nom"><i class="fas fa-user"></i> Nom (facultatif)</label>
+                            <input type="text" name="nom" id="nom" placeholder="Votre nom ou pseudo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Email <span class="required">*</span></label>
+                            <input type="email" name="email" id="email" placeholder="votre@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="note"><i class="fas fa-star"></i> Note <span class="required">*</span></label>
+                            <select id="note" name="note" required>
+                                <option value="" disabled selected>Sélectionnez une note</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                <option value="4">⭐⭐⭐⭐ Très bien</option>
+                                <option value="3">⭐⭐⭐ Bien</option>
+                                <option value="2">⭐⭐ Moyen</option>
+                                <option value="1">⭐ Décevant</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="messages"><i class="fas fa-comment"></i> Votre témoignage <span class="required">*</span></label>
+                            <textarea name="messages" id="messages" placeholder="Décrivez votre expérience avec Building..." required></textarea>
+                            <small>Minimum 20 caractères</small>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" name="allowed" id="allowed" value="True" required>
+                            <label for="allowed">J'autorise la publication de mon avis <span class="required">*</span></label>
+                        </div>
+                        
+                        <div class="form-group submit-btn">
+                            <button type="submit" class="btn">
+                                <i class="fas fa-paper-plane"></i> Soumettre mon avis
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="testimonial-side">
+                    <div class="testimonial-guidelines">
+                        <h3><i class="fas fa-info-circle"></i> Conseils pour votre avis</h3>
+                        <ul>
+                            <li>Soyez honnête et objectif</li>
+                            <li>Décrivez votre expérience en détail</li>
+                            <li>Mentionnez ce que vous avez particulièrement apprécié</li>
+                            <li>Signalez éventuellement ce qui pourrait être amélioré</li>
+                            <li>Évitez les propos injurieux ou discriminatoires</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="testimonial-example">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-rating">
+                                    ⭐⭐⭐⭐⭐
+                                </div>
+                                <div class="testimonial-author">
+                                    <strong>Jean D.</strong>
+                                    <span>Client depuis 2023</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"Building a transformé notre projet en réalité. Leur équipe professionnelle et attentionnée a su comprendre nos besoins et nous proposer des solutions adaptées. Un service impeccable de A à Z !"</p>
+                            </div>
+                            <div class="testimonial-date">
+                                Publié le 15 mars 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Existing Testimonials -->
+        <section class="existing-testimonials">
+            <div class="section-header">
+                <h2>Témoignages de nos clients</h2>
+                <div class="divider"></div>
+                <p>Découvrez ce que nos clients disent de leur expérience avec Building</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Les témoignages existants seraient chargés ici dynamiquement -->
+                <div class="testimonial-item">
+                    <div class="testimonial-meta">
+                        <div class="client-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Marie K.</h4>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>Service exceptionnel! L'équipe de Building a été très réactive et professionnelle. Notre maison est exactement comme nous l'imaginions.</p>
+                    </div>
+                    <div class="testimonial-date">12 avril 2025</div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <div class="testimonial-meta">
+                        <div class="client-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Thomas L.</h4>
+                            <div class="rating">⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>Très bonne expérience globale. Quelques petits retards dans les livraisons mais le résultat final est à la hauteur de nos attentes.</p>
+                    </div>
+                    <div class="testimonial-date">5 mars 2025</div>
+                </div>
+                
+                <div class="testimonial-item">
+                    <div class="testimonial-meta">
+                        <div class="client-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>Sophie M.</h4>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        <p>Je recommande vivement Building pour leur professionnalisme et leur écoute. Ils ont su nous proposer des solutions innovantes pour notre projet complexe.</p>
+                    </div>
+                    <div class="testimonial-date">22 février 2025</div>
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <a href="#" class="view-more-btn">Voir plus de témoignages</a>
+            </div>
+        </section>
+    </main>
+
+     <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <h2>BUILDING</h2>
+                    <p>Construire avec confiance.</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="links-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="#">Nos services</a></li>
+                            <li><a href="#">Réalisations</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Ressources</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Guides</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Compagny</h3>
+                        <ul>
+                            <li><a href="#">À propos</a></li>
+                            <li><a href="#">Équipe</a></li>
+                            <li><a href="#">Carrières</a></li>
+                            <li><a href="#">Partenaires</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-column">
+                        <h3>Légal</h3>
+                        <ul>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">Confidentialité</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="#">CGU</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <h3>Contact</h3>
+                        <div class="contact-info">
+                            <p>📍 Lomé, Togo</p>
+                            <p>📞 +228 90 00 00 00</p>
+                            <p>✉️ contact@building.tg</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-social">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 BUILDING. Tous droits réservés.</p>
+            </div>
+        </footer>
+
+    <script>
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            const note = document.getElementById('note');
+            const message = document.getElementById('messages');
+            
+            if (note.value === "" || note.value === null) {
+                alert("Veuillez attribuer une note");
+                e.preventDefault();
+                return false;
+            }
+            
+            if (message.value.length < 20) {
+                alert("Votre témoignage doit contenir au moins 20 caractères");
+                e.preventDefault();
+                return false;
+            }
+            
+            // Envoyer le formulaire normalement
+            return true;
+        });
+        
+        // Simulation de succès pour la démo
+        /*
+        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+        */
+    </script>
+    <script src="../js/header.js"></script>
+
+</body>
+</html>

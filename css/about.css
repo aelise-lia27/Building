@@ -10,6 +10,7 @@
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
+<<<<<<< HEAD
 body {
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     margin: 0;
@@ -18,6 +19,20 @@ body {
     /* line-height: 1.6; */
     color: var(--dark-color);
     /* overflow-x: hidden; */
+=======
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    overflow-x: hidden;
+>>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
 }
 
 /* Hero Section */
