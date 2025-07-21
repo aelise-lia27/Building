@@ -94,5 +94,4 @@
 
 </body>
 <script src="../js/auth.js"></script>
-<script src="../js/header.js"></script>
 </html>

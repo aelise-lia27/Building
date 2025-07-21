@@ -1,6 +1,7 @@
-<?php require_once(__DIR__ .'/../config/dbconnect.php'); ?>
+<?php require_once(__DIR__ . '/../config/dbconnect.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,8 +70,9 @@
         }
     </style>
 </head>
+
 <body>
-    <?php  require_once(__DIR__.'/header.php'); ?>
+    <?php require_once(__DIR__ . '/header.php'); ?>
 
 
     <main>
@@ -87,33 +89,33 @@
             <div class="testimonial-container">
                 <div class="testimonial-form">
                     <h2><i class="fas fa-edit"></i> Publiez un avis</h2>
-                    
+
                     <!-- <?php if (isset($_GET['error']) && $_GET['error'] == 'not_allowed'): ?>
                         <div class="error-message">
                             <i class="fas fa-exclamation-circle"></i>
                             Vous devez autoriser la publication de votre avis.
                         </div>
                     <?php endif; ?> -->
-                    
+
                     <div class="success-message" id="successMessage">
                         <i class="fas fa-check-circle"></i>
                         Merci pour votre avis ! Il sera publié après modération.
                     </div>
-                    
-                    <form action="submit-publication.php" method="post" class="form-avis" id="testimonialForm">
+
+                    <form class="form-avis" id="testimonialForm">
                         <div class="form-group">
                             <label for="nom"><i class="fas fa-user"></i> Nom (facultatif)</label>
                             <input type="text" name="nom" id="nom" placeholder="Votre nom ou pseudo">
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email <span class="required">*</span></label>
-                            <input type="email" name="email" id="email" placeholder="votre@email.com" required>
+                            <label for="email"><i class="fas fa-envelope"></i> Email </label>
+                            <input type="email" name="email" id="email" placeholder="votre@email.com">
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="note"><i class="fas fa-star"></i> Note <span class="required">*</span></label>
-                            <select id="note" name="note" required>
+                            <label for="note"><i class="fas fa-star"></i> Note </label>
+                            <select id="note" name="note">
                                 <option value="" disabled selected>Sélectionnez une note</option>
                                 <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
                                 <option value="4">⭐⭐⭐⭐ Très bien</option>
@@ -122,26 +124,27 @@
                                 <option value="1">⭐ Décevant</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="messages"><i class="fas fa-comment"></i> Votre témoignage <span class="required">*</span></label>
-                            <textarea name="messages" id="messages" placeholder="Décrivez votre expérience avec Building..." required></textarea>
+                            <label for="comment"><i class="fas fa-comment"></i> Votre témoignage </label>
+                            <textarea name="comment" id="comment" placeholder="Décrivez votre expérience avec Building..."></textarea>
                             <small>Minimum 20 caractères</small>
                         </div>
-                        
+
                         <div class="form-group checkbox-group">
-                            <input type="checkbox" name="allowed" id="allowed" value="True" required>
-                            <label for="allowed">J'autorise la publication de mon avis <span class="required">*</span></label>
+                            <input type="checkbox" name="allowed" id="allowed" value="True">
+                            <label for="allowed">J'autorise la publication de mon avis </label>
                         </div>
-                        ?
+
                         <div class="form-group submit-btn">
                             <button type="submit" class="btn">
                                 <i class="fas fa-paper-plane"></i> Soumettre mon avis
                             </button>
+                            <p class="message" id="message"></p>
                         </div>
                     </form>
                 </div>
-                
+
                 <div class="testimonial-side">
                     <div class="testimonial-guidelines">
                         <h3><i class="fas fa-info-circle"></i> Conseils pour votre avis</h3>
@@ -153,7 +156,7 @@
                             <li>Évitez les propos injurieux ou discriminatoires</li>
                         </ul>
                     </div>
-                    
+
                     <div class="testimonial-example">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
@@ -176,7 +179,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Existing Testimonials -->
         <section class="existing-testimonials">
             <div class="section-header">
@@ -184,101 +187,41 @@
                 <div class="divider"></div>
                 <p>Découvrez ce que nos clients disent de leur expérience avec Building</p>
             </div>
-            
+
             <div class="testimonials-grid">
-                <!-- Les témoignages existants seraient chargés ici dynamiquement -->
-                <div class="testimonial-item">
-                    <div class="testimonial-meta">
-                        <div class="client-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="client-info">
-                            <h4>Marie K.</h4>
-                            <div class="rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>Service exceptionnel! L'équipe de Building a été très réactive et professionnelle. Notre maison est exactement comme nous l'imaginions.</p>
-                    </div>
-                    <div class="testimonial-date">12 avril 2025</div>
-                </div>
-                
-                <div class="testimonial-item">
-                    <div class="testimonial-meta">
-                        <div class="client-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="client-info">
-                            <h4>Thomas L.</h4>
-                            <div class="rating">⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>Très bonne expérience globale. Quelques petits retards dans les livraisons mais le résultat final est à la hauteur de nos attentes.</p>
-                    </div>
-                    <div class="testimonial-date">5 mars 2025</div>
-                </div>
-                
-                <div class="testimonial-item">
-                    <div class="testimonial-meta">
-                        <div class="client-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="client-info">
-                            <h4>Sophie M.</h4>
-                            <div class="rating">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>Je recommande vivement Building pour leur professionnalisme et leur écoute. Ils ont su nous proposer des solutions innovantes pour notre projet complexe.</p>
-                    </div>
-                    <div class="testimonial-date">22 février 2025</div>
-                </div>
+                <!-- Les tém
+                 oignages existants seraient chargés ici dynamiquement -->
+                 <?php foreach ($mysqlClient->query("SELECT * FROM publications WHERE allowed = 'True' ORDER BY date_publication DESC LIMIT 6") as $testimonial  ) :?> 
+                   <?php  $poster = htmlspecialchars($testimonial['poster']);
+                     $email = htmlspecialchars($testimonial['email']);
+                     $note = (int)$testimonial['note'];
+                     $comment = htmlspecialchars($testimonial['comment']);
+                     $date_publication = date('d F Y', strtotime($testimonial['date_publication']));
+                     $note = str_repeat('⭐', $note) . str_repeat('☆', 5 - $note);?>
+                     
+                      <div class="testimonial-item">
+                      <div class="testimonial-meta">
+                      <div class="client-avatar"><i class="fas fa-user-circle"></i></div>
+                      <div class="client-info">
+                      <h4><?php echo $poster; ?></h4>
+                      <div class='rating'><?php echo $note; ?></div>
+                      </div></div>
+                      <div class='testimonial-text'><p> <?php echo $comment ?></p></div>
+                      <div class='testimonial-date'><?php echo $date_publication ?></div>
+                      </div>
+                    <?php endforeach; ?>
             </div>
-            
+
             <div class="view-more">
                 <a href="#" class="view-more-btn">Voir plus de témoignages</a>
             </div>
         </section>
     </main>
 
-   <?php  require_once(__DIR__.'/footer.php'); ?>
+    <?php require_once(__DIR__ . '/footer.php'); ?>
 
-
-    <!-- <script>
-        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
-            const note = document.getElementById('note');
-            const message = document.getElementById('messages');
-            
-            if (note.value === "" || note.value === null) {
-                alert("Veuillez attribuer une note");
-                e.preventDefault();
-                return false;
-            }
-            
-            if (message.value.length < 20) {
-                alert("Votre témoignage doit contenir au moins 20 caractères");
-                e.preventDefault();
-                return false;
-            }
-            
-            // Envoyer le formulaire normalement
-            return true;
-        });
-        
-        // Simulation de succès pour la démo
-        /*
-        document.getElementById('testimonialForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('successMessage').style.display = 'block';
-            this.reset();
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
-        });
-        */
-    </script> -->
-    <script src="../js/header.js"></script>
-
+    <script src="../js/publication.js"></script>
+    
 </body>
+
 </html>

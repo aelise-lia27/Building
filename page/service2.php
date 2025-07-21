@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maisons Luxueuses - Building</title>
+    <title>Maisons Abordables - Building</title>
     <link rel="stylesheet" href="../css/souServce.css">
     <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -227,6 +227,5 @@
 </body>
    <?php  require_once(__DIR__.'/footer.php'); ?>
 
-        <script src="../js/header.js"></script>
 </body>
 </html>

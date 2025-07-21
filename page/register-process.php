@@ -50,18 +50,26 @@ $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 $stmt = $mysqlClient->prepare("INSERT INTO users (firstname, lastname, email, phone, password) VALUES (?, ?, ?, ?, ?)");
 $success = $stmt->execute([$firstname, $lastname, $email, $phone, $hashedPassword]);
 
-if ($success) {
-    $userId = $mysqlClient->lastInsertId();
+if ($success) {    
+     $userId = $mysqlClient->lastInsertId();
 
+    // On récupère le rôle depuis la base
+    $stmtRole = $mysqlClient->prepare("SELECT role FROM users WHERE id = ?");
+    $stmtRole->execute([$userId]);
+    $user = $stmtRole->fetch(PDO::FETCH_ASSOC);
     // Démarrer la session
     session_start();
     $_SESSION['user_id'] = $userId;
     $_SESSION['firstname'] = $firstname;
     $_SESSION['lastname'] = $lastname;
     $_SESSION['email'] = $email;
+    $_SESSION['role'] = $user['role']; 
 
-    echo json_encode(['success' => true]);
-} else {
-    echo json_encode(['success' => false, 'message' => "Erreur lors de l'enregistrement."]);
-}?>
+
+    echo json_encode([
+        'success' => true,
+        'role' => $user['role'],
+    ]);
+}
+
 

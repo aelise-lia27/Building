@@ -1,31 +1,48 @@
+<?php require_once(__DIR__.'/../config/auth.php');
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+if ($_SESSION['role'] !== 'user') {
+    // Refuser l'accès aux admins
+    header("Location: unauthorized.php");
+    exit;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gestion des Services - Building</title>
-    <meta name="description" content="Gestion des services de construction">
+    <title>Mon Compte - Building</title>
+    <meta name="description" content="Tableau de bord utilisateur">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="admin-services.css">
+    <link rel="stylesheet" href="../css/dash-user.css">
     <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="admin-container">
-        <!-- Sidebar -->
-        <aside class="admin-sidebar">
-            <div class="sidebar-header">
-                <img src="../img2/2eme_logo_sans_fond.png" alt="Logo Building" class="sidebar-logo">
-                <h3>Building Admin</h3>
+    <?php require_once(__DIR__.'/header.php'); ?>
+
+    <div class="user-dashboard-container">
+        <!-- User Sidebar -->
+        <aside class="user-sidebar">
+            <div class="user-profile">
+                <img src="../img2/about/dgiamge.jpg" alt="Profile Utilisateur" class="profile-image">
+                <h3><?php  echo  strtoupper($_SESSION['firstname' ]) ." ". $_SESSION['lastname'] ?></h3>
+                <p class="user-email">jean.dupont@example.com</p>
             </div>
-            <nav class="sidebar-nav">
+            <nav class="user-nav">
                 <ul>
-                    <li><a href="admin-dashboard.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li class="active"><a href="admin-services.php"><i class="fas fa-tools"></i> Services</a></li>
-                    <li><a href="#"><i class="fas fa-home"></i> Propriétés</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Utilisateurs</a></li>
-                    <li><a href="#"><i class="fas fa-comment"></i> Avis</a></li>
-                    <li><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
+                    <li class=""><a href="#"><i class="fas fa-tachometer-alt"></i> Tableau de bord</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i> Mes propriétés</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Mes locations</a></li>
+                    <li><a href="#"><i class="fas fa-heart"></i> Favoris</a></li>
+                    <li><a href="#"><i class="fas fa-comment"></i> Mes avis</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
                 </ul>
             </nav>
@@ -35,171 +52,120 @@
         </aside>
 
         <!-- Main Content -->
-        <main class="admin-main">
-            <header class="admin-header">
-                <div class="header-left">
-                    <h1>Gestion des Services</h1>
-                </div>
-                <div class="header-right">
-                    <div class="notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count">2</span>
-                    </div>
-                    <div class="admin-profile">
-                        <img src="../img2/default-profile.jpg" alt="Profile Admin">
-                        <span>Admin</span>
-                    </div>
-                </div>
-            </header>
+        <main class="user-main-content">
+            <div class="welcome-banner">
+                <h1>Bonjour, Jean Dupont</h1>
+                <p>Bienvenue sur votre tableau de bord. Consultez vos activités récentes et vos statistiques.</p>
+            </div>
 
-            <div class="admin-content">
-                <div class="service-actions">
-                    <button class="btn btn-primary" id="addServiceBtn">
-                        <i class="fas fa-plus"></i> Ajouter un service
-                    </button>
-                    <div class="search-box">
-                        <input type="text" placeholder="Rechercher un service...">
-                        <button class="search-btn"><i class="fas fa-search"></i></button>
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Propriétés</p>
                     </div>
                 </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Locations</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Avis</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>7</h3>
+                        <p>Favoris</p>
+                    </div>
+                </div>
+            </div>
 
-                <!-- Add Service Modal -->
-                <div class="modal" id="serviceModal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3>Ajouter un nouveau service</h3>
-                            <span class="close-modal">&times;</span>
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h2 class="section-title">Activité récente</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-home"></i>
                         </div>
-                        <div class="modal-body">
-                            <form id="serviceForm">
-                                <div class="form-group">
-                                    <label for="serviceName">Nom du service</label>
-                                    <input type="text" id="serviceName" name="serviceName" placeholder="Ex: Location de bétonnière" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="serviceCategory">Catégorie</label>
-                                    <select id="serviceCategory" name="serviceCategory" required>
-                                        <option value="">Sélectionnez une catégorie</option>
-                                        <option value="location">Location d'équipement</option>
-                                        <option value="construction">Construction</option>
-                                        <option value="renovation">Rénovation</option>
-                                        <option value="materiaux">Matériaux</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="servicePrice">Prix (€/jour)</label>
-                                    <input type="number" id="servicePrice" name="servicePrice" placeholder="50" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="serviceDescription">Description</label>
-                                    <textarea id="serviceDescription" name="serviceDescription" rows="4" placeholder="Décrivez le service en détail..." required></textarea>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="serviceImages">Images</label>
-                                    <div class="image-upload">
-                                        <label for="serviceImages" class="upload-btn">
-                                            <i class="fas fa-cloud-upload-alt"></i> Choisir des images
-                                        </label>
-                                        <input type="file" id="serviceImages" name="serviceImages" multiple accept="image/*" style="display: none;">
-                                        <div class="image-preview" id="imagePreview"></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Disponibilité</label>
-                                    <div class="availability-options">
-                                        <label>
-                                            <input type="radio" name="serviceAvailability" value="available" checked> Disponible
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="serviceAvailability" value="unavailable"> Indisponible
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-actions">
-                                    <button type="button" class="btn btn-secondary close-modal">Annuler</button>
-                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                </div>
-                            </form>
+                        <div class="activity-content">
+                            <h3>Nouvelle propriété ajoutée</h3>
+                            <p>Vous avez ajouté une maison à Lyon à votre liste de propriétés</p>
+                            <span class="activity-date">10 juin 2023</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h3>Location confirmée</h3>
+                            <p>Votre location de pelleteuse pour le 15 juin a été confirmée</p>
+                            <span class="activity-date">8 juin 2023</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h3>Avis publié</h3>
+                            <p>Vous avez laissé un avis sur la location de bétonnière</p>
+                            <span class="activity-date">5 juin 2023</span>
                         </div>
                     </div>
                 </div>
+                <a href="#" class="view-all-link">Voir toute l'activité <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-                <!-- Services List -->
-                <div class="services-container">
-                    <div class="services-list">
-                        <!-- Service Card 1 -->
-                        <div class="service-card">
-                            <div class="service-image">
-                                <img src="../img2/betonniere.jpg" alt="Bétonnière">
-                                <span class="service-status available">Disponible</span>
+            <!-- Current Rentals -->
+            <div class="current-rentals">
+                <h2 class="section-title">Mes locations en cours</h2>
+                <div class="rentals-list">
+                    <div class="rental-card">
+                        <img src="../img2/betonniere.jpg" alt="Bétonnière" class="rental-image">
+                        <div class="rental-info">
+                            <h3>Location de bétonnière</h3>
+                            <div class="rental-meta">
+                                <span class="rental-date"><i class="fas fa-calendar-alt"></i> 15-20 juin 2023</span>
+                                <span class="rental-price">60€/jour</span>
                             </div>
-                            <div class="service-info">
-                                <h3>Location de bétonnière</h3>
-                                <div class="service-meta">
-                                    <span class="service-category">Location d'équipement</span>
-                                    <span class="service-price">60€/jour</span>
-                                </div>
-                                <p class="service-description">
-                                    Bétonnière professionnelle 160L, capacité 8/6 charges par heure, moteur thermique...
-                                </p>
-                                <div class="service-actions">
-                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                </div>
+                            <div class="rental-status confirmed">
+                                <i class="fas fa-check-circle"></i> Confirmée
                             </div>
+                            <a href="#" class="rental-details-btn">Détails</a>
                         </div>
-                        
-                        <!-- Service Card 2 -->
-                        <div class="service-card">
-                            <div class="service-image">
-                                <img src="../img2/pelleteuse.jpg" alt="Pelleteuse">
-                                <span class="service-status available">Disponible</span>
+                    </div>
+                    <div class="rental-card">
+                        <img src="../img2/pelleteuse.jpg" alt="Pelleteuse" class="rental-image">
+                        <div class="rental-info">
+                            <h3>Location de pelleteuse</h3>
+                            <div class="rental-meta">
+                                <span class="rental-date"><i class="fas fa-calendar-alt"></i> 25-30 juin 2023</span>
+                                <span class="rental-price">120€/jour</span>
                             </div>
-                            <div class="service-info">
-                                <h3>Location de pelleteuse</h3>
-                                <div class="service-meta">
-                                    <span class="service-category">Location d'équipement</span>
-                                    <span class="service-price">120€/jour</span>
-                                </div>
-                                <p class="service-description">
-                                    Pelleteuse compacte 1.5T, idéale pour les petits espaces et travaux de terrassement...
-                                </p>
-                                <div class="service-actions">
-                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                </div>
+                            <div class="rental-status pending">
+                                <i class="fas fa-clock"></i> En attente
                             </div>
-                        </div>
-                        
-                        <!-- Service Card 3 -->
-                        <div class="service-card">
-                            <div class="service-image">
-                                <img src="../img2/maçon.jpg" alt="Maçonnerie">
-                                <span class="service-status unavailable">Indisponible</span>
-                            </div>
-                            <div class="service-info">
-                                <h3>Service de maçonnerie</h3>
-                                <div class="service-meta">
-                                    <span class="service-category">Construction</span>
-                                    <span class="service-price">45€/heure</span>
-                                </div>
-                                <p class="service-description">
-                                    Service professionnel de maçonnerie pour tous vos projets de construction et rénovation...
-                                </p>
-                                <div class="service-actions">
-                                    <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
-                                    <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
+                            <a href="#" class="rental-details-btn">Détails</a>
                         </div>
                     </div>
                 </div>
@@ -207,6 +173,8 @@
         </main>
     </div>
 
-    <script src="admin-services.js"></script>
+    <?php require_once(__DIR__.'/footer.php'); ?>
+
+    <script src="../js/user-dashboard.js"></script>
 </body>
 </html>

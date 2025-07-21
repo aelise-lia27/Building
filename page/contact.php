@@ -190,6 +190,5 @@
             // et afficheriez le message de succès seulement après une réponse positive
         });
     </script>
-    <script src="../js/header.js"></script>
 </body>
 </html>

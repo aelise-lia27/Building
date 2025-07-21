@@ -16,6 +16,7 @@ if (!isset( $_POST['email'], $_POST['password'])) {
 
 $email = trim($_POST['email']);
 $password = $_POST['password'];
+$remember = isset($_POST['remember']) ? $_POST['remember'] : '';
 
 // Validation serveur
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -28,8 +29,9 @@ if (strlen($password) < 8) {
     exit;
 }
 
+
 // Rechercher l'utilisateur
-$stmt = $mysqlClient->prepare("SELECT id, firstname, lastname, email, password FROM users WHERE email = ?");
+$stmt = $mysqlClient->prepare("SELECT id, firstname, lastname, email, password, role FROM users WHERE email = ?");
 $stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -44,11 +46,12 @@ if (!password_verify($password, $user['password'])) {
     exit;
 }
 
-// Si "se souvenir de moi" est coché, on stocke l'email dans un cookie
-/*if (isset($_POST['remember'])) {
-    setcookie('remember_email', $email, time() + (86400 * 30), "/");
-}*/
-if (!empty($_POST['remember'])) {
+
+if ( $_POST['remember'] === 'on') {
+    // Supprimer les anciens tokens pour cet utilisateur
+    $stmt = $mysqlClient->prepare('DELETE FROM remember_tokens WHERE user_id = ?');
+    $stmt->execute([$user['id']]);
+
     // 1. Générer un token unique
     $token = bin2hex(random_bytes(32)); // 64 caractères
 
@@ -72,10 +75,14 @@ if (!empty($_POST['remember'])) {
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['firstname'] = $user['firstname'];
 $_SESSION['lastname'] = $user['lastname'];
+$_SESSION['role'] = $user['role'];
 $_SESSION['email'] = $user['email'];
 
     // Réponse succès + arrêt du script
-echo json_encode(['success' => true]);
+echo json_encode([
+    'success' => true,
+    'role' => $user['role'],
+]);
 exit;
 
 

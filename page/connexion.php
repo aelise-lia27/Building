@@ -95,7 +95,6 @@
 
     </body>
 
-    <script src="../js/connex.js"></script>
-    <script src="../js/header.js"></script>
+    <script src="../js/conex.js"></script>
     <!-- <script src="../js/conex.js"></script> -->
 </html>

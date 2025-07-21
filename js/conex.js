@@ -69,10 +69,13 @@ document.querySelector("form").addEventListener("submit", function (e) {
       if (response.success) {
         message.textContent = "connexion réussie ! Redirection...";
         message.style.color = "green"; // couleur verte
-        setTimeout(() => {
-          window.location.href = "../index.php"; // redirection après 0,3s
-          message.textContent = "";
-        }, 3000);
+       setTimeout(() => {
+            if (response.role === "admin") {
+              window.location.href = "../page/dash-admin.php";
+            } else {
+              window.location.href = "../page/dash-user.php";
+            }
+          }, 3000);
       } else {
         afficherMessageErreur(response.message); //  message d’erreur venant de PHP
       }

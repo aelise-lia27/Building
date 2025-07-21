@@ -10,8 +10,7 @@ const message = document.getElementById("message");
 
 // script.js
 document
-  .getElementById("registerForm")
-  .addEventListener("submit", function (e) {
+  .getElementById("registerForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     // fonction qui affiche les message
@@ -48,8 +47,7 @@ document
     // Vérifier l'email (regexp : format email)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.value)) {
-      afficherMessageErreur();
-      ("Adresse e-mail invalide. Veuillez entrer une adresse e-mail valide.");
+      afficherMessageErreur("Adresse e-mail invalide. Veuillez entrer une adresse e-mail valide.");
       return;
     }
     // verifier le regex du password (regexp : 8-20 caractères, au moins une lettre, un chiffre et un caractère spécial)
@@ -104,15 +102,19 @@ document
         if (response.success) {
           message.textContent = "Inscription réussie ! Redirection...";
           message.style.color = "green"; // couleur verte
+
           setTimeout(() => {
-            window.location.href = "../index.php"; // redirection après 0,3s
-             message.textContent = "";
+            if (response.role === "admin") {
+              window.location.href = "../page/dash-admin.php";
+            } else {
+              window.location.href = "../page/dash-user.php";
+            }
           }, 3000);
         } else {
-          afficherMessageErreur (response.message); //  message d’erreur venant de PHP
+          afficherMessageErreur(response.message); //  message d’erreur venant de PHP
         }
       } else {
-       afficherMessageErreur ("Erreur serveur.");
+        afficherMessageErreur("Erreur serveur.");
       }
     };
 
