@@ -1,8 +1,4 @@
-<?php
- session_start(); 
-?>
-
-<head>
+=<head>
     <link rel="stylesheet" href="../css/header.css">
 </head>
 <header class="entete">

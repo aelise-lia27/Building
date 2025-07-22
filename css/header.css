@@ -1,5 +1,4 @@
 /* Header Styles */
-<<<<<<< HEAD
 :root {
     --primary-color: #FF8C00;
     --secondary-color: #1E3A8A;
@@ -15,8 +14,6 @@
     box-sizing: border-box;
 }
 
-=======
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
 header {
     padding: 15px 5%;
     background-color: rgb(1, 7, 22);
@@ -28,10 +25,7 @@ header {
     top: 0;
     z-index: 99999;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-<<<<<<< HEAD
     
-=======
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
 }
 
 .logo img {
@@ -46,11 +40,7 @@ header {
     transform: scale(1.05);
 }
 
-<<<<<<< HEAD
 .navigation>ul {
-=======
-.navigation > ul {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     display: flex;
     margin: 0;
     padding: 0;
@@ -81,7 +71,6 @@ header {
 }
 
 /* Sous-menus */
-<<<<<<< HEAD
 .has-menu1,
 .has-menu2 {
     position: relative;
@@ -89,13 +78,6 @@ header {
 
 .sousMenu1,
 .sousMenu2 {
-=======
-.has-menu1, .has-menu2 {
-    position: relative;
-}
-
-.sousMenu1, .sousMenu2 {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     position: absolute;
     background-color: rgb(1, 7, 22);
     border: 1px solid orange;
@@ -154,22 +136,14 @@ header {
     height: 100%;
 }
 
-<<<<<<< HEAD
 .sousMenu1 li,
 .sousMenu2 li {
-=======
-.sousMenu1 li, .sousMenu2 li {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     margin: 0;
     padding: 0;
 }
 
-<<<<<<< HEAD
 .sousMenu1 a,
 .sousMenu2 a {
-=======
-.sousMenu1 a, .sousMenu2 a {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     padding: 8px 20px;
     margin: 0;
     color: #c1c1c1;
@@ -178,12 +152,8 @@ header {
     transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
 .sousMenu1 a:hover,
 .sousMenu2 a:hover {
-=======
-.sousMenu1 a:hover, .sousMenu2 a:hover {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     background-color: orange;
     color: rgb(1, 7, 22);
     border-radius: 0;
@@ -227,7 +197,6 @@ header {
     transform: translateY(-5px) rotate(-45deg);
 }
 
-<<<<<<< HEAD
 /* Authentif */
 /* Style spécifique pour le menu d'authentification */
 .auth-menu {
@@ -348,42 +317,21 @@ header {
         margin: 0 5px;
     }
 
-=======
-/* Responsive styles */
-@media (max-width: 992px) {
-    .navigation > ul {
-        margin-left: 0;
-    }
-    
-    .navigation ul li {
-        margin: 0 5px;
-    }
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .navigation ul li a {
         padding: 8px 10px;
         font-size: 14px;
     }
 }
 
-<<<<<<< HEAD
 @media (max-width: 800px) {
     header {
         padding: 10px 5%;
     }
 
-=======
-@media (max-width: 768px) {
-    header {
-        padding: 10px 5%;
-    }
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .logo img {
         width: 100px;
         height: 60px;
     }
-<<<<<<< HEAD
 
     /* .menu-toggle {
         display: flex !important; 
@@ -406,15 +354,6 @@ header {
     }
 
 
-=======
-    
-    .menu-toggle {
-        display: flex;
-        position: relative;
-        right: 0;
-    }
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .navigation {
         position: fixed;
         top: 0;
@@ -429,7 +368,6 @@ header {
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
         z-index: 99998;
     }
-<<<<<<< HEAD
 
     .navigation.active {
         right: 0;
@@ -439,39 +377,18 @@ header {
         flex-direction: column;
     }
 
-=======
-    
-    .navigation.active {
-        right: 0;
-    }
-    
-    .navigation > ul {
-        flex-direction: column;
-    }
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .navigation ul li {
         margin: 10px 0;
         width: 100%;
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .navigation ul li a {
         padding: 12px 15px;
         font-size: 16px;
         border-radius: 4px;
     }
-<<<<<<< HEAD
 
     .sousMenu1,
     .sousMenu2 {
-=======
-    
-    .sousMenu1, .sousMenu2 {
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
         position: static;
         display: none;
         width: 100%;
@@ -482,7 +399,6 @@ header {
         opacity: 1;
         transform: none;
     }
-<<<<<<< HEAD
 
     .has-menu1.active>.sousMenu1,
     .has-menu2.active>.sousMenu2 {
@@ -493,16 +409,6 @@ header {
     .has-menu1:hover .sousMenu1,
     .has-menu2:hover .sousMenu2 {
         display: none;
-=======
-    
-    .sousMenu2 {
-        margin-left: 0;
-    }
-    
-    .has-menu1.active .sousMenu1,
-    .has-menu2.active .sousMenu2 {
-        display: block;
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     }
 }
 
@@ -510,20 +416,10 @@ header {
     header {
         padding: 8px 3%;
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .logo img {
         width: 80px;
         height: 50px;
     }
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     .navigation {
         width: 100%;
         max-width: none;
@@ -535,10 +431,6 @@ header {
         opacity: 0;
         transform: translateY(-10px);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
     to {
         opacity: 1;
         transform: translateY(0);
