@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.style.transform = "translateY(0)";
     });
   });
-
+  
   // Gestion des modales (exemple pour le formulaire d'ajout de service)
   const addServiceBtn = document.getElementById("addServiceBtn");
   const serviceModal = document.getElementById("serviceModal");
@@ -154,20 +154,31 @@ document.getElementById("serviceForm").addEventListener("submit", function (e) {
   }
   // Vérifier le badge (regexp : lettres/chiffres uniquement)
   const badgeRegex = /^[a-zA-ZÀ-ÿ0-9' -]{2,30}$/;
-  if (!badgeRegex.test(badge.value.trim())) {
+  if (badge.value.trim() && !badgeRegex.test(badge.value.trim())) {
     afficherMessageErreur("Badge invalide. Utilisez des lettres et chiffres.");
     return;
   }
   // Vérifier la couleur du badge (regexp : format hexadécimal)
   const colorRegex = /^#[0-9A-F]{6}$/i;
-  if (!colorRegex.test(badgeColor.value.trim())) {
+  if (badgeColor.value.trim() && !colorRegex.test(badgeColor.value.trim())) {
     afficherMessageErreur("Couleur du badge invalide (exemple : #FF0000).");
     return;
   }
 
+  // Création de FormData
+  const formData = new FormData();
+  formData.append("serviceName", serviceName.value);
+  formData.append("serviceCategory", serviceCategory.value);
+  formData.append("servicePrice", servicePrice.value);
+  formData.append("serviceDescription", serviceDescription.value);
+  formData.append("image", image.files[0]); // image réelle
+
+  if (badge.value.trim()) formData.append("badge", badge.value);
+  if (badgeColor.value.trim()) formData.append("badgeColor", badgeColor.value);
+
   // AJAX avec XMLHttpRequest
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "ajouter.php", true);
+  xhr.open("POST", "../process/services-process.php", true);
 
   xhr.onload = function () {
     if (xhr.status === 200) {
@@ -182,17 +193,6 @@ document.getElementById("serviceForm").addEventListener("submit", function (e) {
       afficherMessageErreur("Erreur serveur.");
     }
   };
-
-  // Création de FormData
-  const formData = new FormData();
-  formData.append("serviceName", serviceName.value);
-  formData.append("serviceCategory", serviceCategory.value);
-  formData.append("servicePrice", servicePrice.value);
-  formData.append("serviceDescription", serviceDescription.value);
-  formData.append("image", image.files[0]); // image réelle
-
-  if (badge.value.trim()) formData.append("badge", badge.value);
-  if (badgeColor.value.trim()) formData.append("badgeColor", badgeColor.value);
 
   xhr.send(formData); // Envoi direct
 });

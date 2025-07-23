@@ -933,7 +933,7 @@ input:checked+.slider:before {
     }
 }
 
-/* @keyframes modalopen {
+/*  
     from {
         opacity: 0;
         transform: translateY(-50px);

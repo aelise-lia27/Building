@@ -404,12 +404,12 @@ if ($_SESSION['role'] !== 'admin') {
 
                     <div class="form-group">
                         <label for="serviceName">Titre :</label>
-                        <input type="text" id="serviceName" name="title" placeholder="Ex: Location de bétonnière" >
+                        <input type="text" id="serviceName" name="title" placeholder="Ex: Location de bétonnière">
                     </div>
 
                     <div class="form-group">
                         <label for="serviceCategory">Type :</label>
-                        <select id="serviceCategory" name="type" >
+                        <select id="serviceCategory" name="type">
                             <option value="maison_chere">Maison chère</option>
                             <option value="maison_reduite">Maison à coût réduit</option>
                             <option value="equipement">Équipement à louer</option>
@@ -418,17 +418,17 @@ if ($_SESSION['role'] !== 'admin') {
 
                     <div class="form-group">
                         <label for="servicePrice">Prix (cfa) :</label>
-                        <input type="number" id="servicePrice" name="price" step="0.01" placeholder="50" >
+                        <input type="number" id="servicePrice" name="price" step="0.01" placeholder="50">
                     </div>
 
                     <div class="form-group">
                         <label for="serviceDescription">Description :</label>
-                        <textarea id="serviceDescription" name="description" rows="4" ></textarea>
+                        <textarea id="serviceDescription" name="description" rows="4"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="image">Image :</label>
-                        <input type="file" id="image" name="image" accept="image/*" >
+                        <input type="file" id="image" name="image" accept="image/*">
                     </div>
 
                     <div class="form-group">
