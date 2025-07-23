@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../config/auth.php'); 
+<?php require_once(__DIR__ . '/../config/auth.php');
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -16,6 +16,7 @@ if ($_SESSION['role'] !== 'admin') {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +27,7 @@ if ($_SESSION['role'] !== 'admin') {
     <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div class="admin-container">
         <!-- Sidebar -->
@@ -364,7 +366,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <h3>Ajouter un nouveau service</h3>
                 <span class="close-modal">&times;</span>
             </div>
-            <div class="modal-body">
+            <!-- <div class="modal-body">
                 <form id="serviceForm">
                     <div class="form-group">
                         <label for="serviceName">Nom du service</label>
@@ -395,58 +397,61 @@ if ($_SESSION['role'] !== 'admin') {
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </div>
                 </form>
+            </div> -->
+            <div class="modal-body">
+                <form id="serviceForm" action="ajouter.php" method="POST" enctype="multipart/form-data" style="max-width:500px; margin:auto;">
+                    <h2>Publier une annonce</h2>
+
+                    <div class="form-group">
+                        <label for="serviceName">Titre :</label>
+                        <input type="text" id="serviceName" name="title" placeholder="Ex: Location de bétonnière" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceCategory">Type :</label>
+                        <select id="serviceCategory" name="type" >
+                            <option value="maison_chere">Maison chère</option>
+                            <option value="maison_reduite">Maison à coût réduit</option>
+                            <option value="equipement">Équipement à louer</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicePrice">Prix (cfa) :</label>
+                        <input type="number" id="servicePrice" name="price" step="0.01" placeholder="50" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceDescription">Description :</label>
+                        <textarea id="serviceDescription" name="description" rows="4" ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Image :</label>
+                        <input type="file" id="image" name="image" accept="image/*" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="badge">Badge (optionnel) :</label>
+                        <input type="text" id="badge" name="badge" placeholder="Ex: Promo, Premium">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="badge_color">Couleur du badge :</label>
+                        <input type="color" id="badge_color" name="badge_color" value="#ff0000">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary close-modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Publier</button>
+                    </div>
+                    <p id="message"></p>
+                </form>
             </div>
         </div>
     </div>
-    <div class="modal-body">
-    <form id="serviceForm" action="ajouter.php" method="POST" enctype="multipart/form-data" style="max-width:500px; margin:auto;">
-        <h2>Publier une annonce</h2>
-        
-        <div class="form-group">
-            <label for="serviceName">Titre :</label>
-            <input type="text" id="serviceName" name="title" placeholder="Ex: Location de bétonnière" required>
-        </div>
 
-        <div class="form-group">
-            <label for="serviceCategory">Type :</label>
-            <select id="serviceCategory" name="type" required>
-                <option value="maison_chere">Maison chère</option>
-                <option value="maison_reduite">Maison à coût réduit</option>
-                <option value="equipement">Équipement à louer</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="servicePrice">Prix (€) :</label>
-            <input type="number" id="servicePrice" name="price" step="0.01" placeholder="50" required>
-        </div>
-
-        <div class="form-group">
-            <label for="serviceDescription">Description :</label>
-            <textarea id="serviceDescription" name="description" rows="4" required></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label for="image">Image :</label>
-            <input type="file" id="image" name="image" accept="image/*" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="badge">Badge (optionnel) :</label>
-            <input type="text" id="badge" name="badge" placeholder="Ex: Promo, Premium">
-        </div>
-        
-        <div class="form-group">
-            <label for="badge_color">Couleur du badge :</label>
-            <input type="color" id="badge_color" name="badge_color" value="#ff0000">
-        </div>
-
-        <div class="form-actions">
-            <button type="button" class="btn btn-secondary close-modal">Annuler</button>
-            <button type="submit" class="btn btn-primary">Publier</button>
-        </div>
-    </form>
-</div>
     <script src="../js/dash.js"></script>
 </body>
+
 </html>

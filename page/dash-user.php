@@ -1,16 +1,16 @@
 <?php require_once(__DIR__.'/../config/auth.php');
 session_start();
 
-// if (!isset($_SESSION['user_id'])) {
-//     header("Location: login.php");
-//     exit;
-// }
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
-// if ($_SESSION['role'] !== 'user') {
-//     // Refuser l'accès aux admins
-//     header("Location: unauthorized.php");
-//     exit;
-// }
+if ($_SESSION['role'] !== 'user') {
+    // Refuser l'accès aux admins
+    header("Location: unauthorized.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <?php require_once(__DIR__.'/header.php'); ?>
+    <?php require(__DIR__.'/../include/header.php'); ?>
 
     <div class="user-dashboard-container">
         <!-- User Sidebar -->

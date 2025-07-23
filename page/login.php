@@ -1,4 +1,6 @@
-<?php require_once(__DIR__ .'/../config/dbconnect.php'); ?>
+<?php require_once(__DIR__ .'/../config/dbconnect.php'); 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +18,7 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-    <?php require_once(__DIR__ .'/header.php'); ?>
+    <?php require_once(__DIR__ .'/../include/header.php'); ?>
         <main>
             <section class="auth-container">
                 <div class="auth-hero">
@@ -91,7 +93,7 @@
             </section>
         </main>
 
-        <?php  require_once(__DIR__.'/footer.php'); ?>
+        <?php  require_once(__DIR__.'/../include/footer.php'); ?>
 
     </body>
 

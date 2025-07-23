@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <?php  require_once(__DIR__.'/header.php'); ?>
+    <?php  require(__DIR__.'/../include/header.php'); ?>
 
     <main>
         <section class="auth-container">
@@ -90,7 +91,7 @@
         </section>
     </main>
 
-<?php  require_once(__DIR__.'/footer.php'); ?>
+<?php  require(__DIR__.'/../include/footer.php'); ?>
 
 </body>
 <script src="../js/auth.js"></script>
