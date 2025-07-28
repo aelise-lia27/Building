@@ -7,12 +7,12 @@
     <title>Building - Location d'outils et véhicules de construction</title>
     <link rel="stylesheet" href="../css/instrument.css">
     <link rel="shortcut icon" href="../img2/2eme_logo_sans_fond.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
 </head>
 
 <body>
-    <?php  require_once(__DIR__.'/header.php'); ?>
+    <?php // require_once(__DIR__.'/header.php'); ?>
 
     <div class="hero">
         <div class="hero-content">

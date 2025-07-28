@@ -1,22 +1,43 @@
 <?php
-
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
+require_once('src/controllers/sub-service1.php');
+require_once('src/controllers/sub-service2.php');
+require_once('src/controllers/instrument.php');
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
-    if ($_GET['action'] === 'post') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
-            $identifier = $_GET['id'];
-
-            // post($identifier);
-        } else {
-            echo 'Erreur : aucun identifiant de billet envoyé';
-
-            die;
-        }
-    } else {
-        echo "Erreur 404 : la page que vous recherchez n'existe pas.";
+    // route vers la page de service
+    if ($_GET['action'] === 'service') {
+        header('Location: /templates/service.php');
+        exit;
+    } elseif ($_GET['action'] === 'luxury') {
+        luxuryHouse();
+        exit;
+    } elseif ($_GET['action'] === 'affordable') {
+        affordableHouse();
+        exit;
+    } elseif ($_GET['action'] === 'Instrument') {
+        intrument();
+        exit;
+    }elseif($_GET['action'] === 'Instrument'){
+        intrument();
+        exit;
+    }elseif($_GET['action'] === 'Instrument'){
+        intrument();
+        exit;
+    }elseif($_GET['action'] === 'Instrument'){
+        intrument();
+        exit;
+    }elseif($_GET['action'] === 'Instrument'){
+        intrument();
+        exit;
+    }elseif($_GET['action'] === 'Instrument'){
+        intrument();
+        exit;
     }
+    else {
+        echo "Erreur 404 : la page que vous recherchez n'existe pas.";
+        exit;
+    };
 } else {
-    // homepage();
+    header('Location: /templates/homepage.php');
+    exit;
 }

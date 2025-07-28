@@ -14,30 +14,30 @@
 
     <nav class="navigation" id="main-nav">
         <ul>
-            <li><a href="/index.php">Accueil</a></li>
-            <li><a href="/page/about.php">A propos</a></li>
+            <li><a href="../index.php?action=Acceuil">Accueil</a></li>
+            <li><a href="../index.php?action=Apropos">A propos</a></li>
             <li class="has-menu1">
-                <a href="/page/service.php">Services</a>
+                <a href="../index.php?action=Services">Services</a>
                 <nav class="sousMenu1">
                     <ul>
                         <li class="has-menu2">
                             <a href="#">Maison à vendre</a>
                             <nav class="sousMenu2">
                                 <ul>
-                                    <li><a href="/page/service1.php">Maisons luxueuses</a></li>
-                                    <li><a href="/page/service2.php">Maisons moins cher</a></li>
+                                    <li><a href="../index.php?action=Luxury">Maisons luxueuses</a></li>
+                                    <li><a href="../index.php?action=Affordable">Maisons moins cher</a></li>
                                 </ul>
                             </nav>
                         </li>
-                        <li><a href="/page/instrument.php">Les instruments</a></li>
+                        <li><a href="../index.php?action=Instrument">Les instruments</a></li>
                     </ul>
                 </nav>
             </li>
-            <li><a href="/page/publcation.php">Publication</a></li>
-            <li><a href="/page/contact.php">Contact</a></li>
+            <li><a href="../index.php?action=publication">Publication</a></li>
+            <li><a href="../index.php?action=contact">Contact</a></li>
             <?php if (!isset($_SESSION['user_id'])): ?>
                 <li class="auth-menu">
-                    <a href="/page/connexion.php"><i class="fas fa-user-circle"></i> Connexion</a>
+                    <a href="../index.php?action=login"><i class="fas fa-user-circle"></i> Connexion</a>
                     <!-- <nav class="auth-submenu">
                     <ul>
                         <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
@@ -55,4 +55,4 @@
     </nav>
 </header>
 
-    <script src="../js/header.js"></script>
+<script src="../js/header.js"></script>
