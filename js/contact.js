@@ -16,7 +16,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     message.style.color = "red";
     setTimeout(() => {
       message.textContent = "";
-    }, 7000);
+    }, 1000);
   }
   // verification des champs vides
   if (
