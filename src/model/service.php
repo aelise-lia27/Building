@@ -1,27 +1,42 @@
 <?php
-// connection à la base de données
-function dbConnect()
+require_once('model.php');
+
+
+// Fonction pour ajouter un service
+function addService($serviceName, $serviceDescription, $serviceCategory, $servicePrice, $imageName, $badge, $badgeColor)
 {
+    // connection à la base de données
+    $database = dbConnect();
+
     try {
-        $database = new PDO('mysql:host=localhost;dbname=building;charset=utf8', 'root', '');
-        return $database;
+        $stmt = $database->prepare("INSERT INTO services (title, description, type, price, image, badge, badge_color) VALUES (:title, :description, :type, :price, :image, :badge, :badge_color)");
+        $stmt->execute([
+            'title' => $serviceName,
+            'description' => $serviceDescription,
+            'type' => $serviceCategory,
+            'price' => $servicePrice,
+            'image' => $imageName,
+            'badge' => $badge ?: null,
+            'badge_color' => $badgeColor ?: null
+        ]);
+        return true;
     } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
+        false;
     }
 }
 // Recuperation des maisons chères
 function getExpensiveHouses()
 {
-    // We connect to the database.
+    // connection à la base de données
     $database = dbConnect();
 
     // Recuperation de tous les services dans la bd.
     $statement = $database->query(
         "SELECT id, title, description, type, price, image, badge, badge_color, DATE_FORMAT(date_pub, '%d/%m/%Y à %Hh%imin%ss') AS date_creation_fr FROM services WHERE type = 'maison_chere' ORDER BY date_pub"
     );
-    $ExpensiveHouse = [];
+    $expensiveHouses = [];
     while (($row = $statement->fetch())) {
-        $ExpensiveHouse = [
+        $expensiveHouse = [
             'title' => $row['title'],
             'description' => $row['description'],
             'type' => $row['type'],
@@ -31,16 +46,16 @@ function getExpensiveHouses()
             'badge_color' => $row['badge_color'],
         ];
 
-        $ExpensiveHouses[] = $ExpensiveHouse;
+        $expensiveHouses[] = $expensiveHouse;
     }
 
-    return $ExpensiveHouses;
-}
+    return $expensiveHouses;
+};
 
 // Recuperation des maisons abordables
 function getAffordableHouses()
 {
-    // We connect to the database.
+    // connection à la base de données
     $database = dbConnect();
 
     // Recuperation de tous les services dans la bd.
@@ -64,13 +79,12 @@ function getAffordableHouses()
     }
 
     return $AffordableHouses;
-}
-
+};
 
 // Recuperation des outils de construction
 function getConstructionTools()
 {
-    // We connect to the database.
+    // connection à la base de données
     $database = dbConnect();
 
     // Recuperation de tous les services dans la bd.
@@ -94,11 +108,12 @@ function getConstructionTools()
     }
 
     return $constructionTools;
-}
+};
 
-function getConstructionCar()
+// Recuperation des engin de construction
+function getConstructionCars()
 {
-    // We connect to the database.
+    // connection à la base de données
     $database = dbConnect();
 
     // Recuperation de tous les services dans la bd.
@@ -122,4 +137,4 @@ function getConstructionCar()
     }
 
     return $constructionCars;
-}
+};

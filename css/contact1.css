@@ -371,14 +371,11 @@ textarea {
     color: var(--white);
 }
 
-<<<<<<< HEAD
 .message{
     font-size: 1rem;
     text-align: center;
     margin-top: 10px;
 }
-=======
->>>>>>> 91929188f573b0c3bbd891fb7fe92150be34cf7d
 /* Responsive Design */
 @media (max-width: 768px) {
     .testimonial-hero h1 {

@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -68,7 +67,7 @@
                         <button type="submit" class="auth-btn">S'inscrire</button>
                         <p class="message" id="message"></p>
                         <div class="auth-alt">
-                            Vous avez déjà un compte ? <a href="/page/connexion.php">Se connecter</a>
+                            Vous avez déjà un compte ? <a href="index.php?action=Connexion">Se connecter</a>
                         </div>
                         
                         <div class="social-login">

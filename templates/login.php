@@ -1,5 +1,5 @@
-<?php require_once(__DIR__ .'/../config/dbconnect.php'); 
-session_start();
+<?php require_once(__DIR__ .'/../src/model/model.php'); 
+dbConnect();
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,7 @@ session_start();
                             <p class="message" id="message"></p>
                             <div class="auth-alt">
                                 Vous n'avez pas de compte ? <a
-                                    href="/page/inscription.php">S'inscrire</a>
+                                    href="index.php?action=Inscription">S'inscrire</a>
                             </div>
 
                             <div class="social-login">

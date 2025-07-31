@@ -33,21 +33,22 @@
                     </ul>
                 </nav>
             </li>
-            <li><a href="../index.php?action=publication">Publication</a></li>
-            <li><a href="../index.php?action=contact">Contact</a></li>
+            <li><a href="../index.php?action=Publication">Publication</a></li>
+            <li><a href="../index.php?action=Contact">Contact</a></li>
             <?php if (!isset($_SESSION['user_id'])): ?>
                 <li class="auth-menu">
-                    <a href="../index.php?action=login"><i class="fas fa-user-circle"></i> Connexion</a>
+                    <a href="../index.php?action=Connexion"><i class="fas fa-user-circle"></i> Connexion</a>
                     <!-- <nav class="auth-submenu">
                     <ul>
-                        <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
-                        <li><a href="register.html"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                        <li><a href="../index?action=Connexion"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+                        <li><a href="../index?action=Inscription"><i class="fas fa-user-plus"></i> Inscription</a></li>
                     </ul>
                 </nav> -->
                 </li>
             <?php else: ?>
+                <?php $profileLink = ($_SESSION['role'] === 'admin') ? 'index.php?action=DashAdmin' : 'index.php?action=Profile';?>
                 <li class="auth-menu">
-                    <a href="/page/logout.php"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                    <a href="<?=$profileLink?>"><i class="fas fa-user"></i> Profil</a>
                 </li>
             <?php endif; ?>
 

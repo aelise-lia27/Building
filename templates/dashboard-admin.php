@@ -1,5 +1,4 @@
 <?php 
-session_start();
 
 if (!isset($_SESSION['user_id'])) {
     // Pas connecté
@@ -43,9 +42,9 @@ if ($_SESSION['role'] !== 'admin') {
                     <li data-section="reviews"><a href="#"><i class="fas fa-star"></i> Avis</a></li>
                     <li data-section="users"><a href="#"><i class="fas fa-users"></i> Utilisateurs</a></li>
                     <li data-section="messages"><a href="#"><i class="fas fa-envelope"></i> Messages</a></li>
-                    <li data-section="settings"><a href="../index.php?action=Acceuil"><i class="fas fa-arrow-left"></i> Retour au site</a></li>
-                    <li data-section="settings"><a href="../index.php?action=Acceuil"><i class="fas fa-arrow-left"></i> Deconnexion</a></li>
                     <li data-section="settings"><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li data-section="settings"><a href="../index.php?action=Acceuil"><i class="fas fa-arrow-left"></i> Retour au site</a></li>
+                    <li data-section="settings"><a href="../index.php?action=Deconnexion"><i class="fas fa-sign-in-alt"></i> Deconnexion</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">

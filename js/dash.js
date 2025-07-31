@@ -178,13 +178,13 @@ document.getElementById("serviceForm").addEventListener("submit", function (e) {
 
   // AJAX avec XMLHttpRequest
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "../process/services-process.php", true);
+  xhr.open("POST", "../index?action=CreerUnService", true);
 
   xhr.onload = function () {
     if (xhr.status === 200) {
       const response = JSON.parse(xhr.responseText);
       if (response.success) {
-        message.textContent = "Annonce publiée avec succès !";
+        message.textContent = "Service ajouté avec succès !";
         message.style.color = "green";
       } else {
         afficherMessageErreur(response.message);
