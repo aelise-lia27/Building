@@ -102,7 +102,7 @@ document
     // Soummission du formulaire a l'aide d'AJAX
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "register-process.php", true);
+    xhr.open("POST", "/../templates/register-process.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {

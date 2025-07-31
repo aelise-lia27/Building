@@ -71,9 +71,9 @@ document.querySelector("form").addEventListener("submit", function (e) {
         message.style.color = "green"; // couleur verte
        setTimeout(() => {
             if (response.role === "admin") {
-              window.location.href = "../page/dash-admin.php";
+              window.location.href = "../index?action=DashAdmin";
             } else {
-              window.location.href = "../page/dash-user.php";
+              window.location.href = "../index?action=Profile";
             }
           }, 3000);
       } else {

@@ -5,8 +5,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 // Connexion à la base
-require_once(__DIR__ .'/../src/model/model.php'); 
-dbConnect();
+ require_once(__DIR__ .'/../src/model/db.php'); 
 session_start();
 
 // Vérifier données reçues

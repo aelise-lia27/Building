@@ -1,5 +1,4 @@
-<?php require_once(__DIR__ .'/../src/model/model.php'); 
-dbConnect();
+<?php  require_once(__DIR__ .'/../src/model/db.php'); 
 ?>
 
 <!DOCTYPE html>
