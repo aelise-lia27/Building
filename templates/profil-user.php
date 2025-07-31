@@ -1,5 +1,4 @@
-<?php require_once(__DIR__.'/../config/auth.php');
-session_start();
+<?php require_once(__DIR__.'/../include/auth.php');
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -30,7 +29,7 @@ if ($_SESSION['role'] !== 'user') {
 
     <div class="user-dashboard-container">
         <!-- User Sidebar -->
-        <aside class="user-sidebar">
+         <aside class="user-sidebar">
             <div class="user-profile">
                 <img src="../img2/about/dgiamge.jpg" alt="Profile Utilisateur" class="profile-image">
                 <h3><?php  echo  strtoupper($_SESSION['firstname' ]) ." ". $_SESSION['lastname'] ?></h3>
@@ -44,10 +43,11 @@ if ($_SESSION['role'] !== 'user') {
                     <li><a href="#"><i class="fas fa-heart"></i> Favoris</a></li>
                     <li><a href="#"><i class="fas fa-comment"></i> Mes avis</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="../index.php?action=Acceuil"><i class="fas fa-cog"></i> Retour au site</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                <a href="../index.php?action=Deconnexion" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             </div>
         </aside>
 
@@ -173,7 +173,6 @@ if ($_SESSION['role'] !== 'user') {
         </main>
     </div>
 
-    <?php require_once(__DIR__.'/footer.php'); ?>
 
     <script src="../js/user-dashboard.js"></script>
 </body>

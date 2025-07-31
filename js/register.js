@@ -102,7 +102,7 @@ document
     // Soummission du formulaire a l'aide d'AJAX
 
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/../templates/register-process.php", true);
+    xhr.open("POST", "../index?action=CreerUnCompte", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {
@@ -115,9 +115,9 @@ document
 
           setTimeout(() => {
             if (response.role === "admin") {
-              window.location.href = "../page/dash-admin.php";
+              window.location.href = "../index?action=DashAdmin";
             } else {
-              window.location.href = "../page/dash-user.php";
+              window.location.href = "../index?action=Profile";
             }
           }, 3000);
         } else {

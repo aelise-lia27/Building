@@ -44,10 +44,11 @@ if ($_SESSION['role'] !== 'user') {
                     <li><a href="#"><i class="fas fa-heart"></i> Favoris</a></li>
                     <li><a href="#"><i class="fas fa-comment"></i> Mes avis</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Paramètres</a></li>
+                    <li><a href="../index.php?action=Acceuil"><i class="fas fa-cog"></i> Retour au site</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
-                <a href="../logout.php" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+                <a href="../index.php?action=Deconnexion" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
             </div>
         </aside>
 

@@ -59,7 +59,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
   // Soummission du formulaire a l'aide d'AJAX
 
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", "login-process.php", true);
+  xhr.open("POST", "../index?action=SeConnecter", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   xhr.onload = function () {

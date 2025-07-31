@@ -4,6 +4,7 @@ require_once("include/auth.php");
 require_once('src/controllers/service.php');
 require_once('src/controllers/review.php');
 require_once('src/controllers/contact.php');
+require_once('src/controllers/auth.php');
 require_once('src/controllers/logout.php');
 
 if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -71,8 +72,16 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
             require_once('./templates/register.php');
             break;
 
+        case 'CreerUnCompte':
+            registerUser();
+            break;
+
         case 'Connexion':
             require_once('./templates/login.php');
+            break;
+
+        case 'SeConnecter':
+            loginUser();
             break;
 
         case 'Deconnexion':
