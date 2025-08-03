@@ -63,7 +63,7 @@ $css = "../style.css"; ?>
         <p class="devise">Avec <span class="brand">Buil<span>ding</span></span>, construire, rénover, ou acheter un bien devient simple et accessible. Explorez nos services et démarrez votre prochain projet dès aujourd'hui !</p>
     </div>
 
-    <div class="btn"><a href="../index.php?action=service">Découvrir nos offres</a></div>
+    <div class="btn"><a href="../index.php?action=Services">Découvrir nos offres</a></div>
 </main>
 <?php $content = ob_get_clean(); ?>
 

@@ -184,7 +184,7 @@
         <div class="cta-content">
             <h2>Prêt à concrétiser votre projet?</h2>
             <p>Contactez-nous dès aujourd'hui pour une consultation gratuite</p>
-            <a href="/page/contact.html" class="cta-button">Nous Contacter</a>
+            <a href="../index.php?action=Contact" class="cta-button">Nous Contacter</a>
         </div>
     </section>
 </main>

@@ -69,7 +69,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
 
         // Login
         case 'Inscription':
-            require_once('./templates/register.php');
+            require_once('./templates/auth/register.php');
             break;
 
         case 'CreerUnCompte':
@@ -77,7 +77,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
             break;
 
         case 'Connexion':
-            require_once('./templates/login.php');
+            require_once('./templates/auth/login.php');
             break;
 
         case 'SeConnecter':

@@ -1,6 +1,6 @@
 <?php
 $title = "Connexion - Building";
-$css = "../../css/cone-ins.css";
+$css = "/css/cone-ins.css";
 
 ?>
 <?php ob_start(); ?>
@@ -8,7 +8,7 @@ $css = "../../css/cone-ins.css";
 <main>
     <section class="auth-container">
         <div class="auth-hero">
-            <img src="../../img2/acceuil/m2.png"
+            <img src="../img2/acceuil/m2.png"
                 alt="Équipe de construction Building">
             <h2>Bienvenue chez Building</h2>
             <p>Connectez-vous pour accéder à votre espace personnel et
@@ -81,5 +81,5 @@ $css = "../../css/cone-ins.css";
 
 <?php $content = ob_get_clean(); ?>
 
-<?php $js = "../../js/login.js" ?>
-<?php require('../layout.php') ?>
+<?php $js = "/js/login.js" ?>
+<?php require('./templates/layout.php') ?>
