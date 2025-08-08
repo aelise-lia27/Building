@@ -1,18 +1,18 @@
-name: Deploy to InfinityFree
+name: Deploy Code to InfinityFree
 
 on:
   push:
     branches:
-      - main  # Déploie à chaque push sur main
+      - main
 
 jobs:
-  ftp-deploy:
+  ftp-deploy-code:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: FTP Deploy
+      - name: FTP Deploy code only
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -20,3 +20,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: '.'              # racine du projet
+          exclude: |
+            img2/**                  # Exclure le dossier d'images
