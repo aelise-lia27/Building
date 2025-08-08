@@ -10,8 +10,14 @@ function dbConnect()
     try {
         $mysqlClient = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
         return $mysqlClient;
+        echo("Successfully connected to the database.");
     } catch (PDOException $e) {
         echo json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données : ' . $e->getMessage()]);
         exit;
     }
+
+
+
 }
+
+dbConnect();
