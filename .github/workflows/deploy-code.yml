@@ -20,6 +20,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           server-dir: ${{ secrets.FTP_PATH }}
-          local-dir: '.'              # racine du projet
+          local-dir: './'              # racine du projet
           exclude: |
             img2/**                  # Exclure le dossier d'images

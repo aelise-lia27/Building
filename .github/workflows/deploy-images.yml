@@ -1,0 +1,21 @@
+name: Deploy Images to InfinityFree
+
+on:
+  workflow_dispatch:            # lancement manuel via GitHub Actions
+
+jobs:
+  ftp-deploy-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: FTP Deploy images only
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          server-dir: ${{ secrets.FTP_PATH }}
+          local-dir: 'img2'          # uniquement le dossier images
