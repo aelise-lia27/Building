@@ -38,31 +38,30 @@ $css = "../css/souServce.css";
             <h2>Nos Propriétés Sélectionnées</h2>
             <p>Découvrez nos dernières acquisitions exclusives</p>
         </div>
-
-        <div class="properties-grid">
-            <!-- Property  -->
-            <?php foreach ($affordableHouses as $affordableHouse) : ?>
-                <div class="property-card">
-                    <div class="property-image">
-                        <img src="<?= htmlspecialchars($affordableHouse['image']) ?>" alt="Villa d'exception">
-                        <div class="property-badge">Nouveau</div>
-                    </div>
-                    <div class="property-content">
-                        <h3> <?= htmlspecialchars($affordableHouse['title']) ?></h3>
-                        <div class="property-features">
-                            <?= htmlspecialchars($affordableHouse['description']) ?>
-                            <span><i class="fas fa-bed"></i> 5 chambres</span>
-                            <span><i class="fas fa-bath"></i> 4 salles de bain</span>
-                            <span><i class="fas fa-vector-square"></i> 350 m²</span>
-                        </div>
-                        <div class="property-price"><?= htmlspecialchars($affordableHouse['price']) ?></div>
-                        <button class="property-btn">
-                            <i class="fas fa-home"></i> Visiter la propriété
-                        </button>
-                    </div>
+<div class="properties-grid">
+    <?php foreach ($affordableHouses as $affordableHouse) : ?>
+        <!-- Property  -->
+        <div class="property-card">
+            <div class="property-image">
+                <img src="<?= htmlspecialchars($affordableHouse['image']) ?>" alt="Villa d'exception">
+                <div class="property-badge">Nouveau</div>
+            </div>
+            <div class="property-content">
+                <h3><?= htmlspecialchars($affordableHouse['title']) ?></h3>
+                <div class="property-features">
+                    <?= htmlspecialchars($affordableHouse['description']) ?>
+                    <span><i class="fas fa-bed"></i> 5 chambres</span>
+                    <span><i class="fas fa-bath"></i> 4 salles de bain</span>
+                    <span><i class="fas fa-vector-square"></i> 350 m²</span>
                 </div>
+                <div class="property-price"><?= htmlspecialchars($affordableHouse['price']) ?></div>
+                <button class="property-btn">
+                    <i class="fas fa-home"></i> Visiter la propriété
+                </button>
+            </div>
         </div>
     <?php endforeach; ?>
+</div>
 
     </section>
 
