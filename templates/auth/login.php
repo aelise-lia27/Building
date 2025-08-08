@@ -43,17 +43,17 @@ $css = "/css/cone-ins.css";
                             <label for="remember">Se souvenir de
                                 moi</label>
                         </div>
-                        <div class="forgot-password">
+                        <!-- <div class="forgot-password">
                             <a href="forgot-password.html">Mot de passe
                                 oublié ?</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <button type="submit" class="auth-btn">Se connecter</button>
                     <p class="message" id="message"></p>
                     <div class="auth-alt">
                         Vous n'avez pas de compte ? <a
-                            href="/page/inscription.php">S'inscrire</a>
+                            href="/../../index.php?action=Inscription">S'inscrire</a>
                     </div>
 
                     <div class="social-login">

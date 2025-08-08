@@ -58,11 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
       this.style.transform = "translateY(0)";
     });
   });
-  
+
   // Gestion des modales (exemple pour le formulaire d'ajout de service)
   const addServiceBtn = document.getElementById("addServiceBtn");
   const serviceModal = document.getElementById("serviceModal");
   const closeModalBtns = document.querySelectorAll(".close-modal");
+  const editServiceModal = document.getElementById("editServiceModal");
 
   if (addServiceBtn && serviceModal) {
     addServiceBtn.addEventListener("click", function () {
@@ -81,6 +82,27 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Modal d'édition de service
+  const editServiceBtns = document.querySelectorAll(
+    ".service-actions .btn-warning"
+  );
+  editServiceBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      // Récupérer les données du service depuis la carte
+      const serviceCard = this.closest(".service-card");
+      const serviceId = serviceCard.dataset.id; // Vous devrez ajouter data-id à vos cartes de service
+      const serviceName = serviceCard.querySelector("h3").textContent;
+      // Récupérer les autres données (vous devrez les stocker dans des data-attributes)
+
+      // Remplir le formulaire d'édition
+      document.getElementById("editServiceId").value = serviceId;
+      document.getElementById("editServiceName").value = serviceName;
+      // Remplir les autres champs...
+
+      editServiceModal.style.display = "block";
+    });
+  });
 });
 
 // Recuperation des element

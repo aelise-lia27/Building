@@ -420,6 +420,70 @@ if ($_SESSION['role'] !== 'admin') {
         </div>
     </div>
 
+    <!-- Modal pour éditer un service -->
+<div class="modal" id="editServiceModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Modifier le service</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="editServiceForm" action="../index.php?modifier.php" method="POST" enctype="multipart/form-data" style="max-width:500px; margin:auto;">
+                <input type="hidden" id="editServiceId" name="id">
+                
+                <div class="form-group">
+                    <label for="editServiceName">Titre :</label>
+                    <input type="text" id="editServiceName" name="title" placeholder="Ex: Location de bétonnière">
+                </div>
+
+                <div class="form-group">
+                    <label for="editServiceCategory">Type :</label>
+                    <select id="editServiceCategory" name="type">
+                        <option value="maison_chere">Maison chère</option>
+                        <option value="maison_reduite">Maison à coût réduit</option>
+                        <option value="equipement">Équipement à louer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="editServicePrice">Prix (cfa) :</label>
+                    <input type="number" id="editServicePrice" name="price" step="0.01" placeholder="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="editServiceDescription">Description :</label>
+                    <textarea id="editServiceDescription" name="description" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="editImage">Image :</label>
+                    <input type="file" id="editImage" name="image" accept="image/*">
+                    <div id="currentImageContainer" style="margin-top: 10px;">
+                        <small>Image actuelle :</small>
+                        <img id="currentImagePreview" src="" style="max-width: 100px; display: block; margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editBadge">Badge (optionnel) :</label>
+                    <input type="text" id="editBadge" name="badge" placeholder="Ex: Promo, Premium">
+                </div>
+
+                <div class="form-group">
+                    <label for="editBadgeColor">Couleur du badge :</label>
+                    <input type="color" id="editBadgeColor" name="badge_color" value="#ff0000">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary close-modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+                <p id="editMessage"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
     <script src="../js/dash.js"></script>
 </body>
 
