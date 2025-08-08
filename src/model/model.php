@@ -1,19 +1,17 @@
 <?php
 function dbConnect()
 {
-$host = 'localhost';
-$dbname = 'building';
-$user = 'root';
-$pass = '';
+    $host = 'sql100.infinityfree.com';
+    $dbname = 'if0_39662474_XXX';
+    $user = 'if0_39662474';
+    $pass = 'U1HYOuypu4nTZ';
 
-try {
-    $mysqlClient = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    return $mysqlClient;
-} catch (PDOException $e) {
-    echo json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données : ' . $e->getMessage()]);
-    exit;
+
+    try {
+        $mysqlClient = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+        return $mysqlClient;
+    } catch (PDOException $e) {
+        echo json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données : ' . $e->getMessage()]);
+        exit;
+    }
 }
-
-}
-?>
-
