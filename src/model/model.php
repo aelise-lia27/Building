@@ -2,7 +2,7 @@
 function dbConnect()
 {
     $host = 'sql100.infinityfree.com';
-    $dbname = 'if0_39662474_XXX';
+    $dbname = 'if0_39662474_building';
     $user = 'if0_39662474';
     $pass = 'U1HYOuypu4nTZ';
 
